@@ -16,9 +16,9 @@ const template = `
 const position = api.startNote.getLabelValue("todolistposition") ?? "bottom";
 
 // Widget class definition
-class MyWidget extends api.NoteContextAwareWidget {
+class ToDoListWidget extends api.NoteContextAwareWidget {
     // Define the parent widget pane based on position
-    get parentWidget() { return MyWidget.parentWidget; }
+    get parentWidget() { return ToDoListWidget.parentWidget; }
     uncheckedTasks = []; // Array to hold unchecked tasks
 
     // Determine widget position
@@ -149,7 +149,7 @@ class MyWidget extends api.NoteContextAwareWidget {
             const noteId = $(this).attr("data-noteId");
             const taskId = $(this).attr("data-taskId");
             const checked = $(this).prop("checked");
-            await MyWidget.updateTask(noteId, taskId, checked);
+            await ToDoListWidget.updateTask(noteId, taskId, checked);
         });
     }
 }
@@ -175,4 +175,4 @@ class Task {
 }
 
 // Export the widget
-module.exports = new MyWidget();
+module.exports = new ToDoListWidget();
